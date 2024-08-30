@@ -1,4 +1,4 @@
-package app.quest1;
+package app.quest01;
 
 /*
 Observe o trecho de código abaixo:
