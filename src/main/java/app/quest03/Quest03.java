@@ -21,26 +21,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class Quest03 {
 
     public static void main(String[] args) {
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
         try {
-            Reader reader =  new FileReader(    "D:\\Desafio-Tecnico\\target-sistemas-tecnico\\src\\main\\java\\\\app\\quest03\\faturamento.json");
-            JsonObject json = gson.fromJson(reader, JsonElement.class).getAsJsonObject();
-            JsonArray jsonArray = json.getAsJsonArray("faturamento");
+            JsonParser parser = new JsonParser();
+            JsonArray faturamentoArray = parser.parse(new FileReader("D:\\Desafio-Tecnico\\target-sistemas-tecnico\\src\\main" +
+                    "\\java\\app\\quest03\\dados.json")).getAsJsonArray();
 
             List<Double> faturamento = new ArrayList<>();
+
 
             double minValor = Double.MAX_VALUE;
             double maxValor = Double.MIN_VALUE;
             double soma = 0;
 
-            for (int i = 0; i <jsonArray.size(); i++){
+            for (int i = 0; i <faturamentoArray.size(); i++){
 
-                JsonObject dia = jsonArray.get(i).getAsJsonObject();
+                JsonObject dia = faturamentoArray.get(i).getAsJsonObject();
                 double valor = dia.get("valor").getAsDouble();
 
                 if (valor > 0) {
